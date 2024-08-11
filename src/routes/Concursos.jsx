@@ -54,8 +54,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }),
 );
 
-
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -113,7 +111,6 @@ export default function PersistentDrawerRight() {
         O concurso Banco do Brasil para o cargo de escriturário publicado em 2015 teve oportunidades direcionadas para os estados do Ceará, Paraíba, Pernambuco, Piauí, Rio Grande do Norte e Sergipe. A banca organizadora foi a Fundação CESGRANRIO.
         </Typography>
 
-        <NavLink to="/Forms" >Inscreva-se</NavLink>
 
         <Typography paragraph variant='h5'sx={{textAlign:'center'}}>
           Concurso Caixa Econômica
