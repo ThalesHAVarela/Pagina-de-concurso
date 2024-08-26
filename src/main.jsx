@@ -8,7 +8,8 @@ import {
 import Concursos from './routes/Concursos';
 import Forms from "./routes/Forms.jsx";
 import Meusconcursos from "./routes/Meusconcursos.jsx";
-import Root from './routes/root.jsx';
+import Root from './routes/Root.jsx';
+import Init from './routes/Init.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/Forms",
         element: <Forms />,
+      },
+      {
+        index: true,
+        element: <Init />,
       },
     ],
   },

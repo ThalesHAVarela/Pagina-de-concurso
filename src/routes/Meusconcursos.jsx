@@ -1,15 +1,14 @@
 // Inscricoes.js
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import { Stack } from '@mui/material';
+import { Container, Stack } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import Paper from '@mui/material/Paper';
 
 
 const Inscricoes = () => {
   const [inscricoes, setInscricoes] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchInscricoes = async () => {
@@ -26,56 +25,31 @@ const Inscricoes = () => {
     fetchInscricoes();
   }, []);
 
-  const card = (
-    <React.Fragment>
-      <CardContent sx={{}}>
-        <ul>
-          {inscricoes.map((inscricao) => (
-            <li key={inscricao.id}>
-              Concurso: {inscricao.concurso}
-            </li>
-          ))}
-        </ul>
-        <ul>
-          {inscricoes.map((inscricao) => (
-            <li key={inscricao.id}>
-              Nome: {inscricao.nome} 
-            </li>
-          ))}
-        </ul>
-        <ul>
-          {inscricoes.map((inscricao) => (
-            <li key={inscricao.id}>
-              Sobrenome: {inscricao.sobrenome} 
-            </li>
-          ))}
-        </ul>
-        <ul>
-          {inscricoes.map((inscricao) => (
-            <li key={inscricao.id}>
-              Email: {inscricao.email}
-            </li>
-          ))}
-        </ul>
-        <ul>
-          {inscricoes.map((inscricao) => (
-            <li key={inscricao.id}>
-              Telefone: {inscricao.telefone}
-            </li>
-          ))}
-        </ul>
-
-      </CardContent>
-      <CardActions>
-        <Button size="small">Apagar</Button>
-      </CardActions>
-    </React.Fragment>
-  );
-
   return (
-    <Box sx={{ minWidth: 275}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
       <h2>Inscrições</h2>
-      <Card variant="outlined">{card}</Card>
+      <Container sx={{ display: 'flex', justifyContent: "space-around" }}>
+        <Stack direction={'row'} sx={{ display: 'flex', flexWrap: "wrap", gap: "15px" }}>
+          {inscricoes.map((inscricao) => (
+            <Paper key={inscricao.id} sx={{ width: '25vw', display: 'flex', flexDirection: 'column'}}>
+              <p>Nome: {inscricao.nome}</p>
+              <p>Sobrenome: {inscricao.sobrenome}</p>
+              <p>Email: {inscricao.email}</p>
+              <p>Telefone: {inscricao.telefone}</p>
+              <p>Concurso: {inscricao.concurso}</p>
+              <button onClick={() => {
+                fetch(`http://localhost:3000/inscrições/${inscricao.id}`, {
+                  method: 'DELETE',
+                }).then(() => {
+                    fetch('http://localhost:3000/inscrições')
+                    .then(response => response.json())
+                    .then(data => setInscricoes(data))
+                })
+              }}>Deletar</button>
+            </Paper>
+          ))}
+        </Stack>
+      </Container>
     </Box>
   );
 };

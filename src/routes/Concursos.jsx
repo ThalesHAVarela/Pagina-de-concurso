@@ -1,25 +1,10 @@
 
 
-
-
-
-
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import { Link } from '@mui/material';
 import {
   LineChart,
   Line,
@@ -31,54 +16,11 @@ import {
 } from "recharts";
 import { NavLink  } from 'react-router-dom';
 
-
-const drawerWidth = 240;
-
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginRight: -drawerWidth,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginRight: 0,
-    }),
-    position: 'relative',
-  }),
-);
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-start',
-}));
-
-export default function PersistentDrawerRight() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+export default function Concursos() {
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', flexDirection: "column"}}>
       
-      <Main open={open}>
-        <DrawerHeader />
         <Typography paragraph variant='h5'sx={{textAlign:'center'}}>
           Concurso BB
         </Typography>
@@ -110,7 +52,6 @@ export default function PersistentDrawerRight() {
         <Typography paragraph>
         O concurso Banco do Brasil para o cargo de escriturário publicado em 2015 teve oportunidades direcionadas para os estados do Ceará, Paraíba, Pernambuco, Piauí, Rio Grande do Norte e Sergipe. A banca organizadora foi a Fundação CESGRANRIO.
         </Typography>
-
 
         <Typography paragraph variant='h5'sx={{textAlign:'center'}}>
           Concurso Caixa Econômica
@@ -145,13 +86,6 @@ export default function PersistentDrawerRight() {
           Na etapa discursiva, o candidato produzirá uma redação sobre tema proposto relacionado a conhecimentos específicos.
         </Typography>
 
-        <NavLink to="/Forms" >Inscreva-se</NavLink>
-
-      </Main>
-
-      <Drawer sx={{width: drawerWidth,flexShrink: 0,'& .MuiDrawer-paper': {width: drawerWidth,},}}
-      variant="persistent" anchor="right" open={open}>
-      </Drawer>
     </Box>
   );
 }
@@ -159,7 +93,7 @@ export default function PersistentDrawerRight() {
 const data = [
   {
     name:"2015",
-    Inscritos: 100000,
+    Inscritos: 103512,
     
   },
   {
@@ -169,34 +103,34 @@ const data = [
   },
   {
     name:"2021",
-    Inscritos: 140000,
+    Inscritos: 145490,
     
   },
   {
     name:"2024",
-    Inscritos: 210000,
+    Inscritos: 210362,
     
   }
 ]
 const data1 = [
   {
     name:"2015",
-    Inscritos: 100000,
+    Inscritos: 351378,
     
   },
   {
     name:"2018",
-    Inscritos: 530004,
+    Inscritos: 530434,
     
   },
   {
     name:"2021",
-    Inscritos: 130000,
+    Inscritos: 502788,
     
   },
   {
     name:"2024",
-    Inscritos: 1200000,
+    Inscritos: 789321,
     
   }
 ]

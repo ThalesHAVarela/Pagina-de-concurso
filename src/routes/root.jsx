@@ -124,6 +124,13 @@ export default function PersistentDrawerRight() {
         ))}
       </List>
       <Divider />
+      <List>
+        {['Inscrição'].map((text, index) => (
+          <ListItem key={text} >
+            <NavLink to="/Forms" color="inherit">Inscrição</NavLink>
+          </ListItem>
+        ))}
+      </List>
     </Drawer>
   </Box>
 );

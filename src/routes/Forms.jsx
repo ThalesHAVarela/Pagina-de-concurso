@@ -11,7 +11,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import { Box, Paper } from "@mui/material";
 
 const Formulario = () => {
   const { id } = useParams();
@@ -20,8 +20,6 @@ const Formulario = () => {
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [concurso, setConcurso] = useState('');
-
-  
 
   const Formsubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +32,6 @@ const Formulario = () => {
         },
         body: JSON.stringify(inscricao),
       });
-
       if (response.ok) {
         alert('Inscrição enviada com sucesso!');
         setNome('');
@@ -51,13 +48,13 @@ const Formulario = () => {
     }
   }
 
-
   return (
     <div id="contact">
-      <Container>
+      <Container sx={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width:'100vw'}}>
         <div>
-          <h2>Inscreva-se</h2>
-        </div>
+          <h2 id="divinscreva">Inscreva-se</h2>
+        </div>  
+        <Box sx={{display:"flex", justifyContent:"center", alignItems:"center" }}>
         <Form id="meuForm" onSubmit={Formsubmit} >
           <Stack spacing={2}>
             <Stack spacing={2} direction={'row'}>
@@ -76,6 +73,7 @@ const Formulario = () => {
               <Button type="submit" variant="outlined">Enviar</Button>
           </Stack>
         </Form>
+        </Box>
       </Container>
     </div>
   );
